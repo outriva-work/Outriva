@@ -1,0 +1,55 @@
+.cover {
+  --bg: var(--paper-2);
+  --fg: var(--blue);
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--fg) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--fg) 14%, transparent) 1px, transparent 1px);
+  background-size: 8.33% 11.11%;
+  background-position: -1px -1px;
+}
+.cover[data-tone="blue"] { --bg: var(--blue); --fg: #f4f5f0; }
+.cover[data-tone="marker"] { --bg: var(--marker); --fg: var(--ink); }
+.cover[data-tone="stone"] { --bg: var(--card); --fg: var(--blue); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.cover[data-tone="ink"] { --bg: var(--ink); --fg: var(--marker); }
+
+.svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.glyph { fill: none; stroke: var(--fg); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transition: transform 900ms var(--ease); transform-origin: 70% 60%; }
+.ghost { opacity: 0.35; stroke-width: 2.5; }
+
+/* NDA: the drawing is obscured and partly blacked out. */
+.cover[data-nda="true"] .glyph { filter: blur(5px); opacity: 0.75; }
+.bars rect { fill: var(--ink); }
+.cover[data-tone="ink"] .bars rect { fill: #000; stroke: rgb(255 225 77 / 0.25); stroke-width: 1; }
+
+.stamp {
+  position: absolute;
+  left: 7%;
+  top: 9%;
+  padding: 0.3rem;
+  border: 2.5px solid var(--fg);
+  border-radius: 6px;
+  color: var(--fg);
+  transform: rotate(-8deg);
+  mix-blend-mode: normal;
+}
+.stamp span {
+  display: block;
+  padding: 0.25rem 0.625rem;
+  border: 1.5px solid var(--fg);
+  border-radius: 3px;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variation-settings: "opsz" 24, "wdth" 75;
+}
+.cover[data-large] .stamp span { font-size: 1.125rem; }
+.cover[data-large] { background-size: 40px 40px; }
+
+:global(.case-link):hover .glyph { transform: scale(1.06) rotate(-2deg); }

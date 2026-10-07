@@ -1,0 +1,61 @@
+.hero {
+  position: relative;
+  min-height: min(100svh, 920px);
+  min-height: max(640px, min(100svh, 920px));
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--line);
+}
+
+/* Text sits over the canvas but lets the pen through; only the controls take clicks. */
+.copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1.75rem;
+  min-height: inherit;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: 4.5rem;
+  pointer-events: none;
+}
+.copy a, .copy button { pointer-events: auto; }
+
+.title { max-width: 11ch; }
+.line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.line > span { display: block; animation: rise 1s var(--ease) both; }
+.line:nth-child(2) > span { animation-delay: 80ms; }
+.line:nth-child(3) > span { animation-delay: 160ms; }
+@keyframes rise { from { transform: translateY(105%); } }
+
+.lead { max-width: 31rem; color: var(--ink-2); animation: fade 900ms var(--ease) 350ms both; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; animation: fade 900ms var(--ease) 450ms both; }
+.services { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; animation: fade 900ms var(--ease) 550ms both; }
+.services a { background: var(--card); transition: background-color 250ms var(--ease), border-color 250ms var(--ease); }
+.services a:hover { border-color: var(--ink); }
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } }
+
+.hint {
+  position: absolute;
+  z-index: 2;
+  top: 13%;
+  left: 54%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  font-size: 1.5rem;
+  transform: rotate(-4deg);
+  pointer-events: none;
+  transition: opacity 500ms var(--ease);
+  animation: fade 700ms var(--ease) 3.2s both;
+}
+.hint[data-hidden="true"] { opacity: 0; }
+.arrow { width: 3.5rem; height: auto; margin-top: 0.75rem; }
+
+@media (max-width: 760px) {
+  .hero { min-height: 860px; }
+  .copy { align-content: start; padding-top: calc(var(--header-h) + 1.5rem); gap: 1.25rem; }
+  .title { font-size: clamp(2.75rem, 13.5vw, 4.5rem); }
+  .hint { top: auto; bottom: 39%; left: var(--gutter); font-size: 1.25rem; }
+  .arrow { transform: rotate(40deg); width: 2.5rem; }
+}

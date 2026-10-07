@@ -1,0 +1,11 @@
+.logo { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); }
+.logo[data-tone="paper"] { color: var(--paper); }
+.mark { width: 1.75rem; height: 1.75rem; flex: none; }
+.word {
+  font-size: 1.5rem;
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-variation-settings: "opsz" 48, "wdth" 85;
+  padding-bottom: 0.1em;
+}

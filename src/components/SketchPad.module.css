@@ -1,0 +1,32 @@
+.pad { display: grid; gap: 0.625rem; }
+.surface {
+  position: relative;
+  height: 15rem;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card);
+}
+.canvas { position: absolute; inset: 0; cursor: crosshair; touch-action: none; }
+.empty {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-size: 1.5rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.tools { display: flex; gap: 0.5rem; }
+.tools button {
+  min-height: 2.5rem;
+  padding-inline: 1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: background-color 200ms var(--ease);
+}
+.tools button:hover:not(:disabled) { background: var(--paper-2); }
+.tools button:first-child:not(:disabled) { background: var(--blue); border-color: var(--blue); color: #fff; }
+.tools button:disabled { opacity: 0.4; cursor: not-allowed; }

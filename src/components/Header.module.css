@@ -1,0 +1,83 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease);
+  border-bottom: 1.5px solid transparent;
+}
+.header[data-scrolled="true"],
+.header[data-open="true"] {
+  background: rgb(244 245 240 / 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+}
+
+.bar { display: flex; align-items: center; gap: 1.5rem; height: var(--header-h); }
+.brand { display: inline-flex; padding-block: 0.5rem; flex: none; }
+
+.nav { margin-inline: auto; }
+.nav ul { display: flex; gap: 0.25rem; }
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding-inline: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background-color 250ms var(--ease);
+}
+.navLink:hover { background: var(--paper-2); }
+.navLink[aria-current="page"] { background: var(--ink); color: var(--paper); }
+
+.actions { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+.nav + .actions { margin-left: 0; }
+.cta { min-height: 2.75rem; padding-inline: 1.125rem; font-size: 0.9375rem; }
+
+.menuButton {
+  display: none;
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+/* Absolute rather than fixed: the header's backdrop-filter makes it the containing block. */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  background: var(--paper);
+}
+.panel[hidden] { display: none; }
+.panelList { display: grid; padding-block: 1.5rem 3rem; }
+.panelList li { animation: item-in 500ms var(--ease) both; border-bottom: 1.5px solid var(--line); }
+.panelList a {
+  display: block;
+  padding-block: 0.875rem;
+  font-size: clamp(2.25rem, 10vw, 3rem);
+  font-weight: 720;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variation-settings: "opsz" 96, "wdth" 82;
+}
+@keyframes item-in { from { opacity: 0; transform: translateY(12px); } }
+
+@media (max-width: 1020px) {
+  .nav { display: none; }
+  .actions { margin-left: auto; }
+}
+@media (max-width: 640px) {
+  .cta { display: none; }
+  .menuButton { display: inline-flex; align-items: center; }
+  .actions { gap: 0.5rem; }
+}
+@media (min-width: 641px) and (max-width: 1020px) {
+  .menuButton { display: inline-flex; align-items: center; }
+}

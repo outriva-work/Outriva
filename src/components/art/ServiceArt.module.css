@@ -1,0 +1,38 @@
+.art { width: 100%; height: auto; overflow: visible; }
+
+/* ---------- Final drawing ---------- */
+.card { fill: var(--card); }
+.edge { stroke: var(--ink); stroke-width: 2; fill-opacity: 1; }
+.edgeOnly { fill: none; stroke: var(--ink); stroke-width: 2; }
+.ink { fill: var(--ink); }
+.muted { fill: #c9ccd4; }
+.soft { fill: var(--paper-2); }
+.blue { fill: var(--blue); }
+.marker { fill: var(--marker); }
+.white { fill: none; stroke: #fff; stroke-width: 3; stroke-linejoin: round; }
+.whiteFill { fill: rgb(255 255 255 / 0.85); }
+.sideItem { fill: rgb(244 245 240 / 0.45); }
+.hair { stroke: var(--line-strong); stroke-width: 1; }
+.wire { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.dash { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.text { font-family: var(--font-sans); font-size: 13px; font-weight: 600; fill: var(--ink); }
+.textWhite { font-family: var(--font-sans); font-size: 13px; font-weight: 650; fill: #fff; }
+polyline.edge { fill: none; }
+
+/* ---------- Layers ---------- */
+.final, .draft { transition: opacity 450ms var(--ease); }
+.draft { opacity: 0; }
+
+/* The pencil version: every shape becomes an unfilled grey outline with a wobble. */
+.pencil * { fill: none !important; stroke: var(--pencil) !important; stroke-width: 2 !important; stroke-linecap: round; }
+.pencil text { fill: var(--pencil) !important; stroke: none !important; font-family: var(--font-note) !important; font-size: 17px !important; }
+.note { font-family: var(--font-note); font-size: 26px; font-weight: 700; fill: var(--blue); }
+
+:global([data-mode="draft"]) .final { opacity: 0; }
+:global([data-mode="draft"]) .draft { opacity: 1; }
+
+/* Hovering a card with .show-sketch reveals how the idea started. */
+:global(.show-sketch):hover .final,
+:global(.show-sketch):focus-within .final { opacity: 0; }
+:global(.show-sketch):hover .draft,
+:global(.show-sketch):focus-within .draft { opacity: 1; }

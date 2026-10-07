@@ -1,0 +1,11 @@
+.head {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(3rem, 8vw, 6.5rem));
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1.5px solid var(--line);
+}
+.inner { display: grid; gap: 1.5rem; justify-items: start; }
+.inner h1 { max-width: 14ch; animation: rise 900ms var(--ease) both; }
+.kicker { font-size: 0.9375rem; font-weight: 650; color: var(--blue); }
+.intro { max-width: 36rem; animation: rise 900ms var(--ease) 120ms both; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }

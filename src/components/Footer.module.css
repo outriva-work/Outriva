@@ -1,0 +1,22 @@
+.footer { padding-block: clamp(3.5rem, 7vw, 5.5rem) 2rem; border-top: 1.5px solid var(--line); }
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 2rem;
+  padding-bottom: 3.5rem;
+}
+.brand { display: grid; gap: 1.25rem; align-content: start; max-width: 24rem; }
+.col { display: grid; gap: 1rem; align-content: start; }
+.col ul { display: grid; gap: 0.5rem; justify-items: start; font-size: 0.9375rem; font-weight: 550; }
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1.5px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } .brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }

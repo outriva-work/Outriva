@@ -1,0 +1,59 @@
+.process { position: relative; }
+
+.line { width: 100%; height: 7.5rem; overflow: visible; }
+.path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2.4s var(--ease);
+}
+.head { fill: none; stroke: var(--blue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0; transition: opacity 400ms 2.2s; }
+.process[data-drawn="true"] .path { stroke-dashoffset: 0; }
+.process[data-drawn="true"] .head { opacity: 1; }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 1.5rem;
+}
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  opacity: 0.25;
+  transform: translateY(12px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.process[data-drawn="true"] .step { opacity: 1; transform: none; }
+.node {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--blue);
+  background: var(--card);
+  border-radius: 3px;
+}
+.number {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  line-height: 0.85;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  font-variation-settings: "opsz" 96, "wdth" 75;
+  color: var(--blue);
+}
+.step p { font-size: 0.9375rem; max-width: 22rem; }
+
+@media (max-width: 900px) {
+  .line { display: none; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 3rem; }
+  .step { opacity: 1; transform: none; }
+}
+@media (max-width: 560px) {
+  .steps { grid-template-columns: 1fr; }
+}

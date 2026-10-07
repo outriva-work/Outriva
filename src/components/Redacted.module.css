@@ -1,0 +1,27 @@
+.bar {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  vertical-align: -0.12em;
+  border-radius: 2px;
+  background: var(--ink);
+  cursor: help;
+}
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.35rem);
+  padding: 0.125rem 0.5rem;
+  border-radius: 6px;
+  background: var(--marker);
+  color: var(--ink);
+  font-family: var(--font-note);
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 4px) rotate(-4deg);
+  transition: opacity 200ms var(--ease), transform 300ms var(--spring);
+  pointer-events: none;
+}
+.bar:hover .tip { opacity: 1; transform: translate(-50%, 0) rotate(-4deg); }

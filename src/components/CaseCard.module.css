@@ -1,0 +1,17 @@
+.card { height: 100%; }
+.link { display: grid; gap: 1.25rem; height: 100%; align-content: start; }
+
+.body { display: grid; gap: 0.75rem; }
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.sector { color: var(--blue); }
+.client { color: var(--ink-2); display: inline-flex; gap: 0.5rem; align-items: center; }
+.title { max-width: 26ch; transition: color 250ms var(--ease); }
+.link:hover .title { color: var(--blue); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }

@@ -1,0 +1,37 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+.canvas[data-touch-draw="true"] { touch-action: none; }
+
+.tools {
+  position: absolute;
+  z-index: 4;
+  right: var(--gutter);
+  bottom: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.tool {
+  min-height: 2.5rem;
+  padding-inline: 1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: background-color 250ms var(--ease), color 250ms var(--ease);
+  animation: tool-in 400ms var(--spring) both;
+}
+.tool:hover { background: var(--paper-2); }
+.tool[data-on="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+@keyframes tool-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* "Tap to draw" is only needed where a finger would otherwise scroll the page. */
+.tools > .tool:first-child { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .tools > .tool:first-child { display: inline-flex; align-items: center; }
+}
